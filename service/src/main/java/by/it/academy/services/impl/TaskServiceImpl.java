@@ -24,21 +24,6 @@ public class TaskServiceImpl implements TaskService {
                 .map(TaskDto::new)
                 .collect(Collectors.toList());
         taskDao.closeDao();
-
-        result.forEach(taskDto -> taskDto.setAssessments(extracted(taskDto.getId())));
-
-        return result;
-    }
-
-    private List<AssessmentTdo> extracted(Integer taskId) {
-        return assessmentDao.getListOfTaskAssessment(taskId)
-                .stream().map(AssessmentTdo::new).collect(Collectors.toList());
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new TaskServiceImpl().taskDtos());
-        System.out.println(new TaskServiceImpl().extracted(3));
-
         return result;
     }
 
@@ -63,11 +48,5 @@ public class TaskServiceImpl implements TaskService {
         System.out.println(task);
         taskDao.save(task);
         taskDao.closeDao();
-    }
-
-    public static void main(String[] args) {
-        new TaskServiceImpl().createTask("kksdkfs",1);
-       /*System.out.println(new TaskServiceImpl().findAllTaskDto());*/
-        /* System.out.println(new TaskServiceImpl().getListOfTaskAssessment(3));*/
     }
 }
