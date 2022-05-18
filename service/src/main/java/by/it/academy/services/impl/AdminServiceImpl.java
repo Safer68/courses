@@ -15,6 +15,7 @@ import by.it.academy.services.dto.AdminDto;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -292,5 +293,14 @@ public class AdminServiceImpl implements AdminService {
         admins = adminDao.findAll();
         adminDao.closeDao();
         return admins;
+    }
+
+    @Override
+    public Optional<Admin> findAdminById(Integer id) {
+        Admin admin;
+        AdminDao adminDao = DaoProvider.getInstance().getAdminDao();
+        admin = adminDao.findById(id);
+        adminDao.closeDao();
+        return Optional.ofNullable(admin);
     }
 }

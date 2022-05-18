@@ -6,6 +6,7 @@ import by.it.academy.repository.entity.Course;
 import by.it.academy.services.CourseService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CourseServiceImpl implements CourseService {
@@ -23,5 +24,14 @@ public class CourseServiceImpl implements CourseService {
         return findAllCourse().stream()
                 .filter(course -> course.getMentorField() == null)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Course> findCourseById(Integer id) {
+        Course course;
+        CourseDao courseDao = DaoProvider.getInstance().getCourseDao();
+        course = courseDao.findById(id);
+        courseDao.closeDao();
+        return Optional.ofNullable(course);
     }
 }
