@@ -60,10 +60,33 @@ public class AdminServiceImpl implements AdminService {
             return courseFromAdmin;
     }
 
+@Override
+    public List<AdminMentorDto> allMentorFromAdmin(Integer mentorId) {
+        AdminDao adminDao = DaoProvider.getInstance().getAdminDao();
+        List<AdminMentorDto> mentorFromAdmin = null;
+        mentorFromAdmin = adminDao.showAllMentorAdmin(mentorId).stream()
+                .map(AdminMentorDto::new)
+                .collect(Collectors.toList());
+        adminDao.closeDao();
+        return mentorFromAdmin;
+    }
+	@Override
+    public void createAdmin(String nameCourse)
+            throws SecurityException {
+        adminEntityDao = DaoProvider.getInstance().getAdminDao();
+        Admin newAdmin = Admin.builder()
+                .adminName(nameCourse)
+                .build();
+        adminEntityDao.save(newAdmin);
+        adminEntityDao.closeDao();
+    }
 
-    /**
-     *
-     */
+    public void deleteAdmin(Integer adminId) {
+        adminEntityDao = DaoProvider.getInstance().getAdminDao();
+        adminEntityDao.delete(adminId);
+        adminEntityDao.closeDao();
+    }
+    
     @Override
     public void createCourse(String nameCourse)
             throws SecurityException {
@@ -295,4 +318,12 @@ public class AdminServiceImpl implements AdminService {
         return admins;
     }
 
+    @Override
+    public Optional<Admin> findAdminById(Integer id) {
+        Admin admin;
+        AdminDao adminDao = DaoProvider.getInstance().getAdminDao();
+        admin = adminDao.findById(id);
+        adminDao.closeDao();
+        return Optional.ofNullable(admin);
+    }
 }
