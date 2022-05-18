@@ -10,4 +10,5 @@ public interface CourseService {
     Optional<Course> findCourseById(Integer id);
     List<Course> findAllCourse();
     List<Course> findAllCourseWithoutMentor();
+    Optional<Course> findCourseById(Integer id);
 }
