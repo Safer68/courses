@@ -1,12 +1,11 @@
 package by.it.academy.services;
 
 import by.it.academy.repository.entity.Admin;
-import by.it.academy.services.dto.AdminCourseDto;
-import by.it.academy.services.dto.AdminDto;
-import by.it.academy.services.dto.AdminMentorDto;
+import by.it.academy.services.dto.*;
 
 import java.util.List;
 import java.util.Optional;
+
 import by.it.academy.services.dto.AdminMentorDto;
 
 public interface AdminService {
@@ -25,9 +24,13 @@ public interface AdminService {
 
     void deleteMentorById(int idMentor) throws SecurityException;
 
-    void deleteMentorByName() throws SecurityException;
+    AdminDto findById(Integer adminId);
+
+    void updateAdmin(Integer adminId, String newName);
 
     void createMentor(String nameMentor) throws SecurityException;
+
+    void deleteMentorByName() throws SecurityException;
 
     void deleteCourseById(int idCourse) throws SecurityException;
 

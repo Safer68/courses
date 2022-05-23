@@ -1,17 +1,16 @@
 package by.it.academy.services.impl;
 
-import by.it.academy.repository.dao.AdminDao;
-import by.it.academy.repository.dao.DaoProvider;
-import by.it.academy.repository.dao.EntityDao;
-import by.it.academy.repository.dao.TaskDao;
+import by.it.academy.repository.dao.*;
 import by.it.academy.repository.entity.Admin;
 import by.it.academy.repository.entity.Course;
 import by.it.academy.repository.entity.Mentor;
+import by.it.academy.repository.entity.Task;
 import by.it.academy.repository.util.HibernateUtil;
 import by.it.academy.services.AdminService;
 import by.it.academy.services.dto.AdminCourseDto;
 import by.it.academy.services.dto.AdminDto;
 import by.it.academy.services.dto.AdminMentorDto;
+import by.it.academy.services.dto.TaskDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -31,6 +30,24 @@ public class AdminServiceImpl implements AdminService {
         adminDao.closeDao();
         return result;
     }
+
+    @Override
+    public AdminDto findById(Integer adminId) {
+        AdminDao adminDao = DaoProvider.getInstance().getAdminDao();
+        AdminDto adminDto = new AdminDto(adminDao.findById(adminId));
+        adminDao.closeDao();
+        return adminDto;
+    }
+
+    @Override
+    public void updateAdmin(Integer adminId, String newName) {
+        AdminDao adminDao = DaoProvider.getInstance().getAdminDao();
+        Admin admin = adminDao.findById(adminId);
+        admin.setAdminName(newName);
+        adminDao.update(admin);
+        adminDao.closeDao();
+    }
+
 
     @Override
     public List<AdminCourseDto> allCourseFromAdmin(Integer adminId) {
@@ -70,6 +87,7 @@ public class AdminServiceImpl implements AdminService {
         adminDao.delete(adminId);
         adminDao.closeDao();
     }
+
 
     @Override
     public void createCourse(String nameCourse)
@@ -163,6 +181,7 @@ public class AdminServiceImpl implements AdminService {
         }
         mentorEntityDao.closeDao();
     }
+
 
     /**
      *

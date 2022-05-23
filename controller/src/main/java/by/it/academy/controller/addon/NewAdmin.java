@@ -30,7 +30,6 @@ public class NewAdmin extends HttpServlet {
         String nameAdmin = request.getParameter("nameAdmin");
         if (nameAdmin != null) {
             adminService.createAdmin(nameAdmin);
-            System.out.println(nameAdmin);
             request.getRequestDispatcher("/home?pageName=admin").forward(request, response);
         } else {
             //  request.getRequestDispatcher("success.jsp").forward(request, response);
