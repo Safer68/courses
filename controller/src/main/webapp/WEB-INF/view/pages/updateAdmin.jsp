@@ -17,9 +17,9 @@
 
 <fieldset>
     <form action="updateAdmin" method="post">
-        Admin name <input name="Name"  value="${admin.name}" type="Name"><br>
-
-        <input type='submit' value='Create'>
+        Name <input name="Name" value="${admin.adminName}" type="Name"><br>
+        <button type='submit' id="cancel" name="cancel">Cancel</button>
+        <input type='submit' value='Update'>
     </form>
 </fieldset>
 </body>

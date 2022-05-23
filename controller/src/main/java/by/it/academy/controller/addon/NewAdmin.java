@@ -27,12 +27,17 @@ public class NewAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nameAdmin = request.getParameter("nameAdmin");
-        if (nameAdmin != null) {
-            adminService.createAdmin(nameAdmin);
+
+        if (request.getParameter("cancel") != null) {
             request.getRequestDispatcher("/home?pageName=admin").forward(request, response);
         } else {
-            //  request.getRequestDispatcher("success.jsp").forward(request, response);
+            String nameAdmin = request.getParameter("nameAdmin");
+            if (nameAdmin != null) {
+                adminService.createAdmin(nameAdmin);
+                request.getRequestDispatcher("/home?pageName=admin").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/home?pageName=admin").forward(request, response);
+            }
         }
     }
 }

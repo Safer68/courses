@@ -12,6 +12,7 @@
 <form action="newAdmin" method="POST">
     <fieldset>
         Name <input name="nameAdmin" type="Name"><br>
+        <button type='submit' id="cancel" name="cancel">Cancel</button>
         <input type='submit' value='Create'>
     </fieldset>
 </form>
