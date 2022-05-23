@@ -12,7 +12,7 @@
 <form action="adminDelete" method="POST">
     <fieldset>
         ID
-        <input name="delete Admin" type="ID" value=<%=request.getParameter("adminId")%> readonly="readonly"><br>
+        <input name="deleteAdmin" type="ID" value=<%=request.getParameter("adminId")%> readonly="readonly"><br>
         <input type='submit' value='Delete'>
         <button type='submit' id="cancel" name="cancel">Cancel</button>
     </fieldset>

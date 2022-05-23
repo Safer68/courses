@@ -1,15 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Note
-  Date: 13.05.2022
-  Time: 20:34
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${not empty sessionScope.admin}">
 
-    <a href="newAdmin">Add admin</a>
+    <a href="newAdmin">ADD NEW ADMIN</a>
 
     <table class="table">
         <thead>
@@ -31,7 +24,7 @@
                 <td class="col">${admin.adminName}</td>
                 <td class="col"><a href="adminCourse?adminId=${admin.id}">SHOW LIST COURSES</a></td>
                 <td class="col"><a href="adminMentor?mentorId=${admin.id}">SHOW LIST MENTORS</a></td>
-                <td class="col"><a href="adminUpdate?mentorId=${admin.id}">EDIT</a></td>
+                <td class="col"><a href="updateAdmin?adminId=${admin.id}">EDIT</a></td>
                 <td class="col"><a href="adminDelete?adminId=${admin.id}">DELETE</a>
                 </td>
             </tr>
