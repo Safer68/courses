@@ -10,14 +10,15 @@
 <c:if test="${not empty sessionScope.admin}">
 
     <a href="newAdmin">Add admin</a>
+
     <table class="table">
         <thead>
         <tr>
             <th class="col">№</th>
-            <th class="col">ID</th>
-            <th class="col">Admin name</th>
-            <th class="col">Fixed course</th>
-            <th class="col">Fixed mentor</th>
+            <th class="col">Id</th>
+            <th class="col">Name admin</th>
+            <th class="col">List courses</th>
+            <th class="col">List mentors</th>
             <th class="col">Edit</th>
             <th class="col">Delete</th>
         </tr>
@@ -28,21 +29,10 @@
                 <td class="col">${status.index+1}</td>
                 <td class="col">${admin.id}</td>
                 <td class="col">${admin.adminName}</td>
-                <td class="col">
-                    <a href="adminCourse?adminId=${admin.id}">Show courses</a>
-                </td>
-                <td class="col">
-                    <a href="adminMentor?mentorId=${admin.id}">Show mentors</a>
-                </td>
-                <td class="col">
-                    <a href="adminEdit?mentorId=${admin.id}">Edit</a>
-                </td>
-                <td class="col-1">
-                    <form action="${pageContext.request.contextPath}/adminDelete" name="delete"
-                          method="GET">
-                        <input type="hidden" name="adminId" value="${admin.id}"/>
-                        <button class="btn btn-outline-secondary"><i class="bi bi-trash"></i></button>
-                    </form>
+                <td class="col"><a href="adminCourse?adminId=${admin.id}">SHOW LIST COURSES</a></td>
+                <td class="col"><a href="adminMentor?mentorId=${admin.id}">SHOW LIST MENTORS</a></td>
+                <td class="col"><a href="adminUpdate?mentorId=${admin.id}">EDIT</a></td>
+                <td class="col"><a href="adminDelete?adminId=${admin.id}">DELETE</a>
                 </td>
             </tr>
         </c:forEach>
@@ -52,4 +42,7 @@
 </div>
 
 
-
+<%--<form action="${pageContext.request.contextPath}/adminId=${admin.id}" name="delete"--%>
+<%--      method="post">--%>
+<%--    <button class="btn btn-outline-secondary"><i class="bi bi-trash"></i></button>--%>
+<%--</form>--%>

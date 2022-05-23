@@ -26,9 +26,13 @@ public interface AdminService {
 
     void deleteMentorById(int idMentor) throws SecurityException;
 
-    void deleteMentorByName() throws SecurityException;
+    AdminDto findById(Integer adminId);
+
+    void updateAdmin(Integer adminId, String newName);
 
     void createMentor(String nameMentor) throws SecurityException;
+
+    void deleteMentorByName() throws SecurityException;
 
     void deleteCourseById(int idCourse) throws SecurityException;
 
