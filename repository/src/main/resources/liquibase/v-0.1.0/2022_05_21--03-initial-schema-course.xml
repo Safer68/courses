@@ -13,7 +13,7 @@
                                     admin_id int,
                                     mentor_id int,
                                     constraint course_pk primary key (id),
-                                    constraint course_admin_fk foreign key (admin_id) references admin(id),
+                                    constraint course_admin_fk foreign key (admin_id) references admin(id) ON DELETE SET NULL,
                                     constraint course_mentor_fk foreign key (mentor_id) references mentor(id)
             );
         </sql>
