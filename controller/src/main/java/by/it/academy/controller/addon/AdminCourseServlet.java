@@ -53,7 +53,8 @@ public class AdminCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
-
-
+        if (request.getParameter("return") != null) {
+            request.getRequestDispatcher("/home?pageName=admin").forward(request, response);
+        }
     }
 }

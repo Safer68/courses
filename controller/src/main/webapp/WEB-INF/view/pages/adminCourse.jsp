@@ -25,6 +25,9 @@
             </c:forEach>
             </tbody>
         </table>
-        <button type='submit' id="return" name="return">Return to admin list</button>
+        <form action="adminCourse" method="POST">
+            <button type='submit' id="return" name="return">Return to admin list</button>
+        </form>
+
     </div>
 </c:if>
