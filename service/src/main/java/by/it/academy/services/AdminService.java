@@ -20,9 +20,11 @@ public interface AdminService {
 
     void deleteAdmin(Integer adminId);
 
-    void createCourse(String nameCourse) throws SecurityException;
+    void deleteAdminCourse(int idCourse) throws SecurityException;
 
-    void deleteMentorById(int idMentor) throws SecurityException;
+    void deleteAdminMentor(int idMentor) throws SecurityException;
+
+    void createCourse(String nameCourse) throws SecurityException;
 
     AdminDto findById(Integer adminId);
 
@@ -30,19 +32,6 @@ public interface AdminService {
 
     void createMentor(String nameMentor) throws SecurityException;
 
-    void deleteMentorByName() throws SecurityException;
-
-    void deleteCourseById(int idCourse) throws SecurityException;
-
-    void deleteCourseByName() throws SecurityException;
-
-    void insertMentorToCourse(int idCourse, int idMentor) throws SecurityException;
-
-    void takeCourseForControl(int idAdmin) throws SecurityException;
-
-    void updateMentorToCourse(int idCourse, int idMentor) throws SecurityException;
-
-    void updateAdminToCourse(int idCourse, int idAdmin) throws SecurityException;
 
     List<Admin> findAllAdmin();
 

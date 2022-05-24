@@ -7,10 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${empty sessionScope.courses}">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
 <div class="row mx-2">
     <h1>Courses</h1>
-    <c:if test="${empty sessionScope.courses}">
+
         <h1>no data</h1>
     </c:if>
     <c:if test="${not empty sessionScope.courses}">
